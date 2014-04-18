@@ -54,12 +54,17 @@ function TicTacController($scope)
 		}
 		]
 	];
+
 	var turn = 0;
 	
 	$scope.makeMove = function(obj){
 	
+		function checkForWin() {
+			console.log("sup homie");
+	
+		}
+
 		console.log(obj.position);
-		
 		
 		if(obj.empty == true) {
 			obj.empty = false;
@@ -73,9 +78,19 @@ function TicTacController($scope)
 		} else {
 			alert("NOOOOO");
 		}
-	};
+	
+		if(turn > 4){
+			checkForWin();
+		}
 
-	function checkForWin() {
+		if(turn == 9){
+			alert("It's a tie!");
+		}
+
+	};
+}
+		
+
 		// maybe do a recursive function! 
 		// if obj is top-left -- check top-center -- if top-center is empty or
 		// = opposite letter -- check middle-center -- if middle-center 
@@ -108,9 +123,8 @@ function TicTacController($scope)
 
 		// $scope.col.xo = clickXO;
 		// $scope.col.empty = false;
-	};
+
 
 	// function clickXO(xo) {
 
 	// }
-}
