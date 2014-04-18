@@ -1,0 +1,19 @@
+<html>
+<head>
+	<title></title>
+	<link rel = "stylesheet" href = "style_practice.css">
+
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
+	<script src="script.js"></script>
+</head>
+<body x-ng-app= "" x-ng-controller= "TicTacController">
+	<div class = "gameboard">
+		<div class = "row" x-ng-repeat = "r in rows">
+			<div class = "box" x-ng-repeat = "col in r" x-ng-click="makeMove(col);">
+				{{col.xo}}
+				 
+			</div>
+		</div>
+	</div>
+</body>
+</html>

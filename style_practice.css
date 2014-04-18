@@ -1,0 +1,19 @@
+	.gameboard {
+		border-top: 10px solid white;
+	}
+
+	.box {
+		float:left; 
+		border:3px solid grey; 
+		width:100px; height:100px; 
+		background-color:white; 
+		color:grey; 
+		font-size:40pt;
+		text-align: center;
+		padding-top: 30px;
+		padding-right: 15px;
+		padding-left: 15px;
+	}
+	.row {
+		clear:both;
+	}
