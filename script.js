@@ -1,5 +1,70 @@
+
+
+
 function TicTacController($scope)
 {
+	$scope.families1 = [
+		{
+			name: "House Stark",
+			image: "images/stark1.jpg"
+		},
+		{
+			name: "House Lannister",
+			image: "images/lannister1.jpg"
+		},
+		{
+			name: "House Baratheon",
+			image: "images/baratheon1.jpg"
+		},
+		{
+			name: "House Targaryen",
+			image: "images/targaryen1.jpg"
+		},
+		{
+			name: "House Martell",
+			image: "images/martell1.jpg"
+		},
+		{
+			name: "House Greyjoy",
+			image: "images/greyjoy1.jpg"
+		},
+		{
+			name: "House Tully",
+			image: "images/tully1.jpg"
+		},
+	]
+
+	$scope.families2 = [
+		{
+			name: "House Stark",
+			image: "images/stark2.jpg"
+		},
+		{
+			name: "House Lannister",
+			image: "images/lannister2.jpg"
+		},
+		{
+			name: "House Baratheon",
+			image: "images/baratheon2.jpg"
+		},
+		{
+			name: "House Targaryen",
+			image: "images/targaryen2.jpg"
+		},
+		{
+			name: "House Martell",
+			image: "images/martell2.jpg"
+		},
+		{
+			name: "House Greyjoy",
+			image: "images/greyjoy2.jpg"
+		},
+		{
+			name: "House Tully",
+			image: "images/tully2.jpg"
+		},
+	]
+
 	$scope.rows = [
 		[
 		{

@@ -7,26 +7,51 @@
 	<script src="script.js"></script>
 </head>
 <body x-ng-app= "" x-ng-controller= "TicTacController">
-	<div class = "screen">
-		<img class = "background" src = "images/westeros.jpg" />
+	<div id = "background" class = "transluscent">
 
-	
-		<div class = "user1">
-			<div class = "username1">
+		<header> 
+			TIC TAC TOE
+		</header>
+
+		<div class = "gamepage">
+			<div class = "user1">
+				<div class = "username1">
+					User Name <br>
+					<input type="text" />
+				</div>
+
+				<label class="label">Choose your House: </label>
+				<div class = "dropdown">
+					<select class = "selectFamily" x-ng-model="family1" ng-options="f.name for f in families1">
+						<option x-ng-repeat="f in families1"> {{f}} </option>
+					</select>
+				</div>
+
 			</div>
-		</div>
 
-		<div class = "gameboard">
-			<div class = "row" x-ng-repeat = "r in rows">
-				<div class = "box" x-ng-repeat = "col in r" x-ng-click="makeMove(col);">
-					{{col.xo}}
-					 
+			<div class = "gameboard">
+				<div class = "row" x-ng-repeat = "r in rows">
+					<div class = "box" x-ng-repeat = "col in r" x-ng-click="makeMove(col);">
+						{{col.xo}}
+						 
+					</div>
 				</div>
 			</div>
-		</div>
 
-		<div class = "user2">
-			<div class = "username2">
+			<div class = "user2">
+
+				<div class = "username2">
+					User Name <br>
+					<input type="text" />
+				</div>
+
+				<label class="label">Choose your House: </label>
+				<div class = "dropdown">
+					<select class = "selectFamily" x-ng-model="family2" ng-options="f.name for f in families2">
+						<option x-ng-repeat="f in families2"> {{f}} </option>
+					</select>
+				</div>
+
 			</div>
 		</div>
 	</div>
