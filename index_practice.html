@@ -7,13 +7,29 @@
 	<script src="script.js"></script>
 </head>
 <body x-ng-app= "" x-ng-controller= "TicTacController">
-	<div class = "gameboard">
-		<div class = "row" x-ng-repeat = "r in rows">
-			<div class = "box" x-ng-repeat = "col in r" x-ng-click="makeMove(col);">
-				{{col.xo}}
-				 
+	<div class = "screen">
+		<img class = "background" src = "images/westeros.jpg" />
+
+	
+		<div class = "user1">
+			<div class = "username1">
+			</div>
+		</div>
+
+		<div class = "gameboard">
+			<div class = "row" x-ng-repeat = "r in rows">
+				<div class = "box" x-ng-repeat = "col in r" x-ng-click="makeMove(col);">
+					{{col.xo}}
+					 
+				</div>
+			</div>
+		</div>
+
+		<div class = "user2">
+			<div class = "username2">
 			</div>
 		</div>
 	</div>
+
 </body>
 </html>

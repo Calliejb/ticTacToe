@@ -3,17 +3,17 @@ function TicTacController($scope)
 	$scope.rows = [
 		[
 		{
-			position: "Top-Left", 
+			position: "0-0", 
 			empty: true, 
 			xo: ''
 		},
 		{
-			position: "Top-Center", 
+			position: "0-1", 
 			empty: true, 
 			xo: ''
 		},
 		{
-			position: "Top-Right", 
+			position: "0-2", 
 			empty: true, 
 			xo: ''
 		}
@@ -21,16 +21,16 @@ function TicTacController($scope)
 		
 		[
 		{
-			position: "Middle-Left", 
+			position: "1-0", 
 			empty: true, 
 			xo: ''
 		},
 		{
-			position: "Middle-Center", 
+			position: "1-1", 
 			empty: true, 
 			xo: ''},
 		{
-			position: "Middle-Right", 
+			position: "1-2", 
 			empty: true, 
 			xo: ''
 		}
@@ -38,17 +38,17 @@ function TicTacController($scope)
 					
 		[
 		{
-			position: "Bottom-Left", 
+			position: "2-0", 
 			empty: true, 
 			xo: ''
 		},
 		{
-			position: "Bottom-Center", 
+			position: "2-1", 
 			empty: true, 
 			xo: ''
 		},
 		{
-			position: "Bottom-Right", 
+			position: "2-2", 
 			empty: true, 
 			xo: ''
 		}
@@ -61,7 +61,23 @@ function TicTacController($scope)
 	
 		function checkForWin() {
 			console.log("sup homie");
-	
+			if($scope.rows[0][0].xo == $scope.rows[1][0].xo && $scope.rows[1][0].xo == $scope.rows[2][0].xo) {
+				console.log("condition 1");
+			} else if($scope.rows[0][1].xo == $scope.rows[1][1].xo && $scope.rows[1][1].xo == $scope.rows[2][1].xo) {
+				console.log("condition 2");
+			} else if($scope.rows[0][2].xo == $scope.rows[2][1].xo && $scope.rows[2][1].xo == $scope.rows[2][2].xo) {
+				console.log("condition 3");
+			} else if($scope.rows[0][0].xo == $scope.rows[0][1].xo && $scope.rows[0][1].xo == $scope.rows[0][2].xo) {
+				console.log("condition 4");
+			} else if($scope.rows[1][0].xo == $scope.rows[1][1].xo && $scope.rows[1][1].xo == $scope.rows[1][2].xo) {
+				condition.log("conditon 5");
+			} else if($scope.rows[2][0].xo == $scope.rows[2][1].xo && $scope.rows[2][1].xo == $scope.rows[2][2].xo) {
+				console.log("condition 6");
+			} else if($scope.rows[0][0].xo == $scope.rows[1][1].xo && $scope.rows[1][1].xo == $scope.rows[2][2].xo) {
+				console.log("condition 7");
+			} else if($scope.rows[0][2].xo == $scope.rows[1][1].xo && $scope.rows[1][1].xo == $scope.rows[2][0].xo) {
+				console.log("condition 8");
+			}
 		}
 
 		console.log(obj.position);

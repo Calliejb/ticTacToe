@@ -1,18 +1,53 @@
+	body {
+		text-align: center;
+		background-image: opacity:0.4;
+		filter:alpha(opacity=40;
+		url("images/westeros.jpg");
+	}
+
+	.screen {
+		max-width: 960px;
+	}
+	.background {
+		opacit
+	}
+
+	.user1 {
+		border: 1px solid black;
+		height: 800px;
+		max-width: 700px;
+		width: 30%;
+		float: left;
+	}
+
 	.gameboard {
-		border-top: 10px solid white;
+		border: 1px solid white;
+		height: 360px;
+		max-width: 360px;
+		width: 50%;
+		float: left;
+	}
+
+		.user2 {
+		border: 1px solid black;
+		height: 800px;
+		max-width: 700px;
+		width: 19%;
+		float: left;
 	}
 
 	.box {
 		float:left; 
-		border:3px solid grey; 
-		width:100px; height:100px; 
-		background-color:white; 
+		font-family: verdana;
+		outline:1px solid black; 
+		max-width: 120px;
+		width:33%; height:120px; 
+		background-color:transparent; 
 		color:grey; 
 		font-size:40pt;
 		text-align: center;
-		padding-top: 30px;
-		padding-right: 15px;
-		padding-left: 15px;
+		
+
 	}
 	.row {
 		clear:both;
