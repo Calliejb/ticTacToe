@@ -10,29 +10,30 @@ function TicTacController($scope)
 		},
 		{
 			name: "House Lannister",
-			image: "images/lannister1.jpg"
+			image: "images/lannister1.jpeg"
 		},
 		{
 			name: "House Baratheon",
-			image: "images/baratheon1.jpg"
+			image: "images/baratheon1.jpeg"
 		},
 		{
 			name: "House Targaryen",
-			image: "images/targaryen1.jpg"
+			image: "images/targaryen1.jpeg"
 		},
 		{
 			name: "House Martell",
-			image: "images/martell1.jpg"
+			image: "images/martell1.jpeg"
 		},
 		{
 			name: "House Greyjoy",
-			image: "images/greyjoy1.jpg"
+			image: "images/greyjoy1.jpeg"
 		},
 		{
 			name: "House Tully",
-			image: "images/tully1.jpg"
+			image: "images/tully1.jpeg"
 		},
-	]
+	];
+
 
 	$scope.families2 = [
 		{
@@ -41,36 +42,40 @@ function TicTacController($scope)
 		},
 		{
 			name: "House Lannister",
-			image: "images/lannister2.jpg"
+			image: "images/lannister2.jpeg"
 		},
 		{
 			name: "House Baratheon",
-			image: "images/baratheon2.jpg"
+			image: "images/baratheon2.jpeg"
 		},
 		{
 			name: "House Targaryen",
-			image: "images/targaryen2.jpg"
+			image: "images/targaryen2.jpeg"
 		},
 		{
 			name: "House Martell",
-			image: "images/martell2.jpg"
+			image: "images/martell2.jpeg"
 		},
 		{
 			name: "House Greyjoy",
-			image: "images/greyjoy2.jpg"
+			image: "images/greyjoy2.jpeg"
 		},
 		{
 			name: "House Tully",
-			image: "images/tully2.jpg"
+			image: "images/tully2.jpeg"
 		},
 	]
+
+	$scope.changeImage = function() {
+
+	}
 
 	$scope.rows = [
 		[
 		{
 			position: "0-0", 
 			empty: true, 
-			xo: ''
+			xo: ' '
 		},
 		{
 			position: "0-1", 
@@ -80,7 +85,7 @@ function TicTacController($scope)
 		{
 			position: "0-2", 
 			empty: true, 
-			xo: ''
+			xo: ' '
 		}
 		],
 		
@@ -93,7 +98,8 @@ function TicTacController($scope)
 		{
 			position: "1-1", 
 			empty: true, 
-			xo: ''},
+			xo: ' '
+		},
 		{
 			position: "1-2", 
 			empty: true, 
@@ -105,7 +111,7 @@ function TicTacController($scope)
 		{
 			position: "2-0", 
 			empty: true, 
-			xo: ''
+			xo: ' '
 		},
 		{
 			position: "2-1", 
@@ -115,7 +121,7 @@ function TicTacController($scope)
 		{
 			position: "2-2", 
 			empty: true, 
-			xo: ''
+			xo: ' '
 		}
 		]
 	];
@@ -130,12 +136,12 @@ function TicTacController($scope)
 				console.log("condition 1");
 			} else if($scope.rows[0][1].xo == $scope.rows[1][1].xo && $scope.rows[1][1].xo == $scope.rows[2][1].xo) {
 				console.log("condition 2");
-			} else if($scope.rows[0][2].xo == $scope.rows[2][1].xo && $scope.rows[2][1].xo == $scope.rows[2][2].xo) {
+			} else if($scope.rows[0][2].xo == $scope.rows[1][2].xo && $scope.rows[1][2].xo == $scope.rows[2][2].xo) {
 				console.log("condition 3");
 			} else if($scope.rows[0][0].xo == $scope.rows[0][1].xo && $scope.rows[0][1].xo == $scope.rows[0][2].xo) {
 				console.log("condition 4");
 			} else if($scope.rows[1][0].xo == $scope.rows[1][1].xo && $scope.rows[1][1].xo == $scope.rows[1][2].xo) {
-				condition.log("conditon 5");
+				console.log("conditon 5");
 			} else if($scope.rows[2][0].xo == $scope.rows[2][1].xo && $scope.rows[2][1].xo == $scope.rows[2][2].xo) {
 				console.log("condition 6");
 			} else if($scope.rows[0][0].xo == $scope.rows[1][1].xo && $scope.rows[1][1].xo == $scope.rows[2][2].xo) {
@@ -157,15 +163,16 @@ function TicTacController($scope)
 				turn += 1;
 			}
 		} else {
-			alert("NOOOOO");
+			console.log("NOOOOO");
 		}
 	
 		if(turn > 4){
 			checkForWin();
 		}
 
-		if(turn == 9){
-			alert("It's a tie!");
+		if(turn == 9) //&& no win!!// 
+		{
+			console.log("It's a tie!");
 		}
 
 	};

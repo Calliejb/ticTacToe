@@ -14,6 +14,10 @@
 		</header>
 
 		<div class = "gamepage">
+			
+			<div class = "leftcolumn">
+			</div>
+
 			<div class = "user1">
 				<div class = "username1">
 					User Name <br>
@@ -22,9 +26,13 @@
 
 				<label class="label">Choose your House: </label>
 				<div class = "dropdown">
-					<select class = "selectFamily" x-ng-model="family1" ng-options="f.name for f in families1">
-						<option x-ng-repeat="f in families1"> {{f}} </option>
+					<select class = "selectFamily" ng-options="f.name for f in families1" x-ng-model="family1">
+						
 					</select>
+				</div>
+
+				<div class = "houseimage1">
+					<img x-ng-src= "{{ family1.image}} " />
 				</div>
 
 			</div>
@@ -48,8 +56,12 @@
 				<label class="label">Choose your House: </label>
 				<div class = "dropdown">
 					<select class = "selectFamily" x-ng-model="family2" ng-options="f.name for f in families2">
-						<option x-ng-repeat="f in families2"> {{f}} </option>
+						</option>
 					</select>
+				</div>
+
+				<div class = "houseimage2">
+					<img x-ng-src= "{{ family2.image}} " />
 				</div>
 
 			</div>

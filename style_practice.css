@@ -4,6 +4,10 @@
 		font-family: helvetica;
 	}
 
+	header {
+		height: 100px;
+	}
+
 
 	#background {
 		background-image: url("images/westeros.jpg");
@@ -11,7 +15,7 @@
 	}
 
 	.transluscent {
-		opacity: .6;
+		opacity: .7;
 		position: absolute;
 		left: 0px;
 		top: 0px;
@@ -19,13 +23,21 @@
 
 
 	.gamepage {
-		max-width: 1200px;
+		max-width: 1300px;
+		/*Figure this out!!! The opacity of the text and borders*/
+		opacity: none;
+	}
+
+	.leftcolumn {
+		width: 5%;
+		height: 1200px;
+		float: left;
 	}
 
 	.user1 {
 		border: 1px solid black;
-		height: 800px;
-		width: 30%;
+		height: 1200px;
+		width: 28%;
 		float: left;
 	}
 
@@ -63,19 +75,30 @@
 	   background: url("images/down_arrow_select.jpg") no-repeat right #ddd;
 	   border: 1px solid #ccc;
 	   }
+	.houseimage1 {
+		width: 200px;
+		height: 200px;
+		border: 1px solid black;
+	}
+	.houseimage2 {
+		width: 200px;
+		height: 200px;
+		border: 1px solid black;
+	}
+
 
 	.gameboard {
 		border: 1px solid white;
 		height: 400px;
-		width: 39%;
+		width: 38%;
 		float: left;
 		padding-top: 100px;
 	}
 
 	.user2 {
 		border: 1px solid black;
-		height: 800px;
-		width: 30%;
+		height: 1200px;
+		width: 28%;
 		float: left;
 	}
 
@@ -90,12 +113,13 @@
 	.box {
 		float:left; 
 		font-family: verdana;
-		outline:1px solid black; 
+		outline:3px solid black; 
 		width:33%; 
 		height:33%; 
 		background-color:transparent; 
 		font-size:40pt;
 		text-align: center;
+		line-height: 130px;
 		
 
 	}
