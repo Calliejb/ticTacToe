@@ -38,15 +38,15 @@
 					<div class = "wtl">
 						<div class = "wtldiv">
 							<h3>W</h3>
-							<p>0</p>
+							<p> {{player1.wins}} </p>
 						</div>
 						<div class = "wtldiv">
 							<h3>T</h3>
-							<p>0</p>
+							<p> {{player1.ties}} </p>
 						</div>
 						<div class = "wtldiv">
 							<h3>L</h3>
-							<p>0</p>
+							<p> {{player1.losses}} </p>
 						</div>
 					</div>
 				</div>
@@ -54,7 +54,7 @@
 			</div>
 
 			<div class = "gameboard">
-				<div class = "row" x-ng-repeat = "r in rows">
+				<div class = "row" x-ng-repeat = "r in rows"> 
 					<div class = "box" x-ng-repeat = "col in r" x-ng-click="makeMove(col);">
 						{{col.xo}}
 						 
@@ -81,15 +81,15 @@
 					<div class = "wtl">
 						<div class = "wtldiv">
 							<h3>W</h3>
-							<p>0</p>
+							<p> {{player2.wins}} </p>
 						</div>
 						<div class = "wtldiv">
 							<h3>T</h3>
-							<p>0</p>
+							<p> {{player2.ties}} </p>
 						</div>
 						<div class = "wtldiv">
 							<h3>L</h3>
-							<p>0</p>
+							<p> {{player2.losses}}</p>
 						</div>
 					</div>
 				</div>

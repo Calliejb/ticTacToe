@@ -132,7 +132,7 @@
 
 	.gameboard {
 		border: 1px solid white;
-		height: 400px;
+		height: 500px;
 		width: 38%;
 		float: left;
 		padding-top: 100px;
@@ -157,8 +157,8 @@
 		float:left; 
 		font-family: verdana;
 		outline:3px solid black; 
-		width:33%; 
-		height:33%; 
+		width:33%;
+		height:120px; 
 		background-color:transparent; 
 		font-size:40pt;
 		text-align: center;
@@ -182,4 +182,4 @@
         width: 100%;
         min-width: 300px;
     	}*/
-	}
+	

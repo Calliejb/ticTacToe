@@ -65,100 +65,73 @@ function TicTacController($scope)
 			name: "House Tully",
 			image: "images/tully2.jpeg"
 		},
-	]
-
-	$scope.changeImage = function() {
-
-	}
+	];
 
 	$scope.rows = [
 		[
 		{
-			position: "0-0", 
-			empty: true, 
+			position: "0-0",
+			empty: true,
 			xo: ' '
 		},
 		{
-			position: "0-1", 
-			empty: true, 
+			position: "0-1",
+			empty: true,
 			xo: ''
 		},
 		{
-			position: "0-2", 
-			empty: true, 
+			position: "0-2",
+			empty: true,
 			xo: ' '
 		}
 		],
 		
 		[
 		{
-			position: "1-0", 
-			empty: true, 
+			position: "1-0",
+			empty: true,
 			xo: ''
 		},
 		{
-			position: "1-1", 
-			empty: true, 
+			position: "1-1",
+			empty: true,
 			xo: ' '
 		},
 		{
-			position: "1-2", 
-			empty: true, 
+			position: "1-2",
+			empty: true,
 			xo: ''
 		}
 		],
 					
 		[
 		{
-			position: "2-0", 
-			empty: true, 
+			position: "2-0",
+			empty: true,
 			xo: ' '
 		},
 		{
-			position: "2-1", 
-			empty: true, 
+			position: "2-1",
+			empty: true,
 			xo: ''
 		},
 		{
-			position: "2-2", 
-			empty: true, 
+			position: "2-2",
+			empty: true,
 			xo: ' '
 		}
 		]
 	];
 
 	var turn = 0;
+	var win1 = 0;
+	var win2 = 0;
+	var loss1 = 0;
+	var loss2 = 0;
+	var tie = 0;
 	
 	$scope.makeMove = function(obj){
 	
-		function checkForWin() {
-			console.log("sup homie");
-			if($scope.rows[0][0].xo == $scope.rows[1][0].xo && $scope.rows[1][0].xo == $scope.rows[2][0].xo) {
-				console.log("left column");
-				console.log("$scope.rows[0][0]");
-			} else if($scope.rows[0][1].xo == $scope.rows[1][1].xo && $scope.rows[1][1].xo == $scope.rows[2][1].xo) {
-				console.log("middle column");
-				console.log("$scope.rows[0][1]");
-			} else if($scope.rows[0][2].xo == $scope.rows[1][2].xo && $scope.rows[1][2].xo == $scope.rows[2][2].xo) {
-				console.log("right column");
-				console.log("$scope.rows[0][2]");
-			} else if($scope.rows[0][0].xo == $scope.rows[0][1].xo && $scope.rows[0][1].xo == $scope.rows[0][2].xo) {
-				console.log("top row");
-				console.log("$scope.rows[0][0]");
-			} else if($scope.rows[1][0].xo == $scope.rows[1][1].xo && $scope.rows[1][1].xo == $scope.rows[1][2].xo) {
-				console.log("middle row");
-				console.log("$scope.rows[1][0]");
-			} else if($scope.rows[2][0].xo == $scope.rows[2][1].xo && $scope.rows[2][1].xo == $scope.rows[2][2].xo) {
-				console.log("bottom row");
-				console.log("$scope.rows[2][0]");
-			} else if($scope.rows[0][0].xo == $scope.rows[1][1].xo && $scope.rows[1][1].xo == $scope.rows[2][2].xo) {
-				console.log("diagonal left");
-				console.log("$scope.rows[0][0]");
-			} else if($scope.rows[0][2].xo == $scope.rows[1][1].xo && $scope.rows[1][1].xo == $scope.rows[2][0].xo) {
-				console.log("diagonal right");
-				console.log("$scope.rows[0][2]");
-			} //else return false??//
-		}
 
 		console.log(obj.position);
 		
@@ -166,7 +139,7 @@ function TicTacController($scope)
 			obj.empty = false;
 			if(turn % 2 == 0) {
 				obj.xo = "X";
-				turn += 1;	
+				turn += 1;
 			} else {
 				obj.xo = "O";
 				turn += 1;
@@ -179,11 +152,58 @@ function TicTacController($scope)
 			checkForWin();
 		}
 
-		if(turn == 9) //&& check for win == false!!// 
-		{
-			console.log("It's a tie!");
+		function checkForWin() {
+			console.log("sup homie");
+			if($scope.rows[0][0].xo == $scope.rows[1][0].xo && $scope.rows[1][0].xo == $scope.rows[2][0].xo) {
+				console.log("left column");
+				console.log($scope.rows[0][0].xo + " wins!");
+			} else if($scope.rows[0][1].xo == $scope.rows[1][1].xo && $scope.rows[1][1].xo == $scope.rows[2][1].xo) {
+				console.log("middle column");
+				console.log($scope.rows[0][1].xo + " wins!");
+			} else if($scope.rows[0][2].xo == $scope.rows[1][2].xo && $scope.rows[1][2].xo == $scope.rows[2][2].xo) {
+				console.log("right column");
+				console.log($scope.rows[0][2].xo + " wins!");
+			} else if($scope.rows[0][0].xo == $scope.rows[0][1].xo && $scope.rows[0][1].xo == $scope.rows[0][2].xo) {
+				console.log("top row");
+				console.log($scope.rows[0][0].xo + " wins!");
+			} else if($scope.rows[1][0].xo == $scope.rows[1][1].xo && $scope.rows[1][1].xo == $scope.rows[1][2].xo) {
+				console.log("middle row");
+				console.log($scope.rows[1][0] + " wins!");
+			} else if($scope.rows[2][0].xo == $scope.rows[2][1].xo && $scope.rows[2][1].xo == $scope.rows[2][2].xo) {
+				console.log("bottom row");
+				console.log($scope.rows[2][0].xo + " wins!");
+			} else if($scope.rows[0][0].xo == $scope.rows[1][1].xo && $scope.rows[1][1].xo == $scope.rows[2][2].xo) {
+				console.log("diagonal left");
+				console.log($scope.rows[0][0].xo + " wins!");
+			} else if($scope.rows[0][2].xo == $scope.rows[1][1].xo && $scope.rows[1][1].xo == $scope.rows[2][0].xo) {
+				console.log("diagonal right");
+				console.log($scope.rows[0][2].xo + "wins!");
+			// } else 
+				// return false;
+			}
+
 		}
 
+		if(turn == 9)
+		{
+			console.log("It's a tie!");
+			tie++;
+		}
+
+	};
+
+	$scope.player1 = {
+		letter: '',
+		wins: win1,
+		ties: tie,
+		losses: loss1
+	};
+
+	$scope.player2 = {
+		letter: '',
+		wins: win2,
+		ties: tie,
+		losses: loss2
 	};
 }
 		
