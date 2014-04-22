@@ -1,5 +1,6 @@
 
-
+// var gameApp = angular.module('gameApp', []);
+// gameApp.controller('GameController', function($scope){
 
 function TicTacController($scope)
 {
@@ -133,22 +134,30 @@ function TicTacController($scope)
 		function checkForWin() {
 			console.log("sup homie");
 			if($scope.rows[0][0].xo == $scope.rows[1][0].xo && $scope.rows[1][0].xo == $scope.rows[2][0].xo) {
-				console.log("condition 1");
+				console.log("left column");
+				console.log("$scope.rows[0][0]");
 			} else if($scope.rows[0][1].xo == $scope.rows[1][1].xo && $scope.rows[1][1].xo == $scope.rows[2][1].xo) {
-				console.log("condition 2");
+				console.log("middle column");
+				console.log("$scope.rows[0][1]");
 			} else if($scope.rows[0][2].xo == $scope.rows[1][2].xo && $scope.rows[1][2].xo == $scope.rows[2][2].xo) {
-				console.log("condition 3");
+				console.log("right column");
+				console.log("$scope.rows[0][2]");
 			} else if($scope.rows[0][0].xo == $scope.rows[0][1].xo && $scope.rows[0][1].xo == $scope.rows[0][2].xo) {
-				console.log("condition 4");
+				console.log("top row");
+				console.log("$scope.rows[0][0]");
 			} else if($scope.rows[1][0].xo == $scope.rows[1][1].xo && $scope.rows[1][1].xo == $scope.rows[1][2].xo) {
-				console.log("conditon 5");
+				console.log("middle row");
+				console.log("$scope.rows[1][0]");
 			} else if($scope.rows[2][0].xo == $scope.rows[2][1].xo && $scope.rows[2][1].xo == $scope.rows[2][2].xo) {
-				console.log("condition 6");
+				console.log("bottom row");
+				console.log("$scope.rows[2][0]");
 			} else if($scope.rows[0][0].xo == $scope.rows[1][1].xo && $scope.rows[1][1].xo == $scope.rows[2][2].xo) {
-				console.log("condition 7");
+				console.log("diagonal left");
+				console.log("$scope.rows[0][0]");
 			} else if($scope.rows[0][2].xo == $scope.rows[1][1].xo && $scope.rows[1][1].xo == $scope.rows[2][0].xo) {
-				console.log("condition 8");
-			}
+				console.log("diagonal right");
+				console.log("$scope.rows[0][2]");
+			} //else return false??//
 		}
 
 		console.log(obj.position);
@@ -170,7 +179,7 @@ function TicTacController($scope)
 			checkForWin();
 		}
 
-		if(turn == 9) //&& no win!!// 
+		if(turn == 9) //&& check for win == false!!// 
 		{
 			console.log("It's a tie!");
 		}
