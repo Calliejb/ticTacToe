@@ -23,18 +23,21 @@
 			<div class = "user1">
 				<div class = "username1">
 					User Name <br>
-					<input type="text" />
+					<input type="text" x-ng-model="username1"/> <input type="button" value="Submit" x-ng-click="setPlayer1(username1)"/>
+					<p>Player 1 is {{player1.username}}</p>
 				</div>
 
 				<label class="label">Choose your House: </label>
 				<div class = "dropdown">
-					<select class = "selectFamily" ng-options="f.name for f in families1" x-ng-model="family1">
-						
+					<select class = "selectFamily" ng-options="f.name for f in families1" x-ng-model="family1">	
 					</select>
 				</div>
 
-				<div class = "houseimage1">
-					<img x-ng-src= "{{ family1.image}} " />
+
+				<div class = "house1" x-ng-click="seeScores();">
+					<div id="family1-image">
+						<img x-ng-src= "{{ family1.image}} " />
+					</div>
 					<div class = "wtl">
 						<div class = "wtldiv">
 							<h3>W</h3>
@@ -60,13 +63,17 @@
 						 
 					</div>
 				</div>
+				<div>
+					<h2>{{winner}} wins!! Yayyyy!!!</h2>
+				</div>
 			</div>
 
 			<div class = "user2">
 
 				<div class = "username2">
-					User Name <br>
-					<input type="text" />
+					Enter Username: <br>
+					<input type="text" x-ng-model="username2"/> <input type="button" value="Submit" x-ng-click="setPlayer2(username2)"/>
+					<p>Player 2 is {{player2.username}}</p>
 				</div>
 
 				<label class="label">Choose your House: </label>
@@ -76,8 +83,10 @@
 					</select>
 				</div>
 
-				<div class = "houseimage2">
-					<img x-ng-src= "{{ family2.image}} " />
+				<div class = "house2">
+					<div id = "family-image2">
+						<img x-ng-src= "{{ family2.image}} " />
+					</div>
 					<div class = "wtl">
 						<div class = "wtldiv">
 							<h3>W</h3>
@@ -94,6 +103,9 @@
 					</div>
 				</div>
 
+			</div>
+
+			<div class = "rightcolumn">
 			</div>
 		</div>
 	</div>

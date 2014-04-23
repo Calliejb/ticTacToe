@@ -129,7 +129,42 @@ function TicTacController($scope)
 	var loss1 = 0;
 	var loss2 = 0;
 	var tie = 0;
+
+	$scope.player1 = {
+		username: '',
+		xo: '',
+		family: '',
+		wins: win1,
+		ties: tie,
+		losses: loss1
+	};
+
+	$scope.player2 = {
+		username: '',
+		xo: '',
+		family:'',
+		wins: win2,
+		ties: tie,
+		losses: loss2
+	};
+
 	
+	$scope.setPlayer1 = function(username){
+		$scope.player1.username = username;
+		$scope.player1.xo = 'X';
+		console.log($scope.player1.username);
+	}
+
+	$scope.setPlayer2 = function(username){
+		$scope.player2.username = username;
+		$scope.player2.xo = 'O';
+		console.log($scope.player2.username);
+	}
+
+	$scope.seeScores = function(){
+		document.getElementById("family1-image").style.top = 10 + 'px'; 
+	}
+
 	$scope.makeMove = function(obj){
 	
 
@@ -138,10 +173,10 @@ function TicTacController($scope)
 		if(obj.empty == true) {
 			obj.empty = false;
 			if(turn % 2 == 0) {
-				obj.xo = "X";
+				obj.xo = $scope.player1.xo;
 				turn += 1;
 			} else {
-				obj.xo = "O";
+				obj.xo = $scope.player2.xo;
 				turn += 1;
 			}
 		} else {
@@ -157,54 +192,81 @@ function TicTacController($scope)
 			if($scope.rows[0][0].xo == $scope.rows[1][0].xo && $scope.rows[1][0].xo == $scope.rows[2][0].xo) {
 				console.log("left column");
 				console.log($scope.rows[0][0].xo + " wins!");
+				if($scope.rows[0][0].xo == 'X'){
+					$scope.winner=$scope.player1.username;
+				} else if($scope.rows[0][0].xo == 'O'){
+					$scope.winner=$scope.player2.username;
+				}
 			} else if($scope.rows[0][1].xo == $scope.rows[1][1].xo && $scope.rows[1][1].xo == $scope.rows[2][1].xo) {
 				console.log("middle column");
 				console.log($scope.rows[0][1].xo + " wins!");
+				if($scope.rows[0][1].xo == 'X'){
+					$scope.winner=$scope.player1.username;
+				} else if($scope.rows[0][1].xo == 'O'){
+					$scope.winner=$scope.player2.username;
+				}
 			} else if($scope.rows[0][2].xo == $scope.rows[1][2].xo && $scope.rows[1][2].xo == $scope.rows[2][2].xo) {
 				console.log("right column");
 				console.log($scope.rows[0][2].xo + " wins!");
+				if($scope.rows[0][2].xo == 'X'){
+					$scope.winner=$scope.player1.username;
+				} else if($scope.rows[0][2].xo == 'O'){
+					$scope.winner=$scope.player2.username;
+				}
 			} else if($scope.rows[0][0].xo == $scope.rows[0][1].xo && $scope.rows[0][1].xo == $scope.rows[0][2].xo) {
 				console.log("top row");
 				console.log($scope.rows[0][0].xo + " wins!");
+				if($scope.rows[0][0].xo == 'X'){
+					$scope.winner=$scope.player1.username;
+				} else if($scope.rows[0][0].xo == 'O'){
+					$scope.winner=$scope.player2.username;
+				}
 			} else if($scope.rows[1][0].xo == $scope.rows[1][1].xo && $scope.rows[1][1].xo == $scope.rows[1][2].xo) {
 				console.log("middle row");
 				console.log($scope.rows[1][0] + " wins!");
+				if($scope.rows[1][0].xo == 'X'){
+					$scope.winner=$scope.player1.username;
+				} else if($scope.rows[1][0].xo == 'O'){
+					$scope.winner=$scope.player2.username;
+				}
 			} else if($scope.rows[2][0].xo == $scope.rows[2][1].xo && $scope.rows[2][1].xo == $scope.rows[2][2].xo) {
 				console.log("bottom row");
 				console.log($scope.rows[2][0].xo + " wins!");
+				if($scope.rows[2][0].xo == 'X'){
+					$scope.winner=$scope.player1.username;
+				} else if($scope.rows[2][0].xo == 'O'){
+					$scope.winner=$scope.player2.username;
+				}
 			} else if($scope.rows[0][0].xo == $scope.rows[1][1].xo && $scope.rows[1][1].xo == $scope.rows[2][2].xo) {
 				console.log("diagonal left");
 				console.log($scope.rows[0][0].xo + " wins!");
+				if($scope.rows[0][0].xo == 'X'){
+					$scope.winner=$scope.player1.username;
+				} else if($scope.rows[0][0].xo == 'O'){
+					$scope.winner=$scope.player2.username;
+				}
 			} else if($scope.rows[0][2].xo == $scope.rows[1][1].xo && $scope.rows[1][1].xo == $scope.rows[2][0].xo) {
 				console.log("diagonal right");
 				console.log($scope.rows[0][2].xo + "wins!");
-			// } else 
-				// return false;
+				if($scope.rows[0][2].xo == 'X'){
+					$scope.winner=$scope.player1.username;
+				} else if($scope.rows[0][2].xo == 'O'){
+					$scope.winner=$scope.player2.username;
+				}
+			} else {
+				return false;
 			}
 
 		}
 
-		if(turn == 9)
-		{
+		if(turn == 9 && checkForWin() === false) {
 			console.log("It's a tie!");
 			tie++;
 		}
 
 	};
 
-	$scope.player1 = {
-		letter: '',
-		wins: win1,
-		ties: tie,
-		losses: loss1
-	};
 
-	$scope.player2 = {
-		letter: '',
-		wins: win2,
-		ties: tie,
-		losses: loss2
-	};
 }
 		
 
