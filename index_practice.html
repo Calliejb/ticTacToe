@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html>
+<html x-ng-app= "tictacApp">
 <head>
 	<title></title>
 	<link rel = "stylesheet" href = "style_practice.css">
@@ -8,7 +8,7 @@
 	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
 	<script src="script.js"></script>
 </head>
-<body x-ng-app= "" x-ng-controller= "TicTacController">
+<body x-ng-controller= "TicTacController">
 	<div id = "background">
 
 		<header> 
@@ -20,102 +20,110 @@
 
 		<div class = "gamepage">
 			
-			<div class = "leftcolumn">
+			<div class = "col1">
 			</div>
 
-			<div class = "user1">
-				<div class = "username1">
-					Enter Username: <br>
-					<input type="text" x-ng-model="username1"/> <input type="button" value="Submit" x-ng-click="setPlayer1(username1, f.name)" />
-					<p>Player 1 is {{player1.username}}</p>
-				</div>
+			<div class = "col2">
+				<div id = "user1">
+					<div class = "username1">
+						Enter Username: <br>
+						<input type="text" x-ng-model="username1"/> <input type="button" value="Submit" x-ng-click="setPlayer1(username1, f.name)" />
+						<p>Player 1 is {{player1.username}}</p>
+					</div>
 
-				<label class="label">Choose your House: </label>
-				<div class = "dropdown">
-					<select class = "selectFamily" ng-options="f.name for f in families1" x-ng-model="family1">	
-					</select>
-				</div>
+					<label class="label">Choose your House: </label>
+					<div class = "dropdown">
+						<select class = "selectFamily" ng-options="f.name for f in families1" x-ng-model="family1">	
+						</select>
+					</div>
 
 
-				<div class = "house1" >
-					<!-- x-ng-click="seeScores();" -->
-					<div class = "wtl">
-						<div class = "wtldiv">
-							<h3>W</h3>
-							<p> {{player1.wins}} </p>
+					<div class = "house1" >
+						<!-- x-ng-click="seeScores();" -->
+						<div class = "wtl">
+							<div class = "wtldiv">
+								<h3>W</h3>
+								<p> {{player1.wins}} </p>
+							</div>
+							<div class = "wtldiv">
+								<h3>T</h3>
+								<p> {{player1.ties}} </p>
+							</div>
+							<div class = "wtldiv">
+								<h3>L</h3>
+								<p> {{player1.losses}} </p>
+							</div>
 						</div>
-						<div class = "wtldiv">
-							<h3>T</h3>
-							<p> {{player1.ties}} </p>
-						</div>
-						<div class = "wtldiv">
-							<h3>L</h3>
-							<p> {{player1.losses}} </p>
+						<div class ="family1-image">
+							<img x-ng-src= "{{family1.image}} " />
 						</div>
 					</div>
-					<div class ="family1-image">
-						<img x-ng-src= "{{family1.image}} " />
-					</div>
 				</div>
-
-			</div>
-
-			<div class = "beforegame">
-				<div class = "newgamediv">
-					<a href="#" class="newgame" x-ng-click="newGame();">New Game</a>
-				</div>
-
 			</div>
 
 			<div id = "gameboard">
+
+				<div id = "beforegame">
+					<div class = "newgamediv">
+						<a href="#" class="newgame" x-ng-click="newGame();">New Game</a>
+					</div>
+				</div>
+
+				<div id = "setusers">
+					<h2> Choose your user name and house! </h2>
+				</div>
+
+				<div id = "duringgame">
 				<div class = "row" x-ng-repeat = "r in rows"> 
 					<div class = "box" x-ng-repeat = "col in r" x-ng-click="makeMove(col);">
 						{{col.xo}}
 						 
 					</div>
 				</div>
+			</div>
 				
 				
 			</div>
+			
+			<div class = "col4">
+				<div id = "user2">
 
-			<div class = "user2">
+					<div class = "username2">
+						Enter Username: <br>
+						<input type="text" x-ng-model="username2"/> <input type="button" value="Submit" x-ng-click="setPlayer2(username2, f.name)"/>
+						<p>Player 2 is {{player2.username}}</p>
+					</div>
 
-				<div class = "username2">
-					Enter Username: <br>
-					<input type="text" x-ng-model="username2"/> <input type="button" value="Submit" x-ng-click="setPlayer2(username2, f.name)"/>
-					<p>Player 2 is {{player2.username}}</p>
-				</div>
+					<label class="label">Choose your House: </label>
+					<div class = "dropdown">
+						<select class = "selectFamily" ng-options="f.name for f in families2" x-ng-model="family2">
+							</option>
+						</select>
+					</div>
 
-				<label class="label">Choose your House: </label>
-				<div class = "dropdown">
-					<select class = "selectFamily" ng-options="f.name for f in families2" x-ng-model="family2">
-						</option>
-					</select>
-				</div>
-
-				<div class = "house2">
-					<div class = "wtl">
-						<div class = "wtldiv">
-							<h3>W</h3>
-							<p> {{player2.wins}} </p>
+					<div class = "house2">
+						<div class = "wtl">
+							<div class = "wtldiv">
+								<h3>W</h3>
+								<p> {{player2.wins}} </p>
+							</div>
+							<div class = "wtldiv">
+								<h3>T</h3>
+								<p> {{player2.ties}} </p>
+							</div>
+							<div class = "wtldiv">
+								<h3>L</h3>
+								<p> {{player2.losses}}</p>
+							</div>
 						</div>
-						<div class = "wtldiv">
-							<h3>T</h3>
-							<p> {{player2.ties}} </p>
-						</div>
-						<div class = "wtldiv">
-							<h3>L</h3>
-							<p> {{player2.losses}}</p>
+						<div class = "family-image2">
+							<img x-ng-src= "{{ family2.image}} " />
 						</div>
 					</div>
-					<div class = "family-image2">
-						<img x-ng-src= "{{ family2.image}} " />
-					</div>
 				</div>
-
 			</div>
 
-			<div class = "rightcolumn">
+			<div class = "col5">
 			</div>
 		</div>
 	</div>

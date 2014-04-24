@@ -1,8 +1,50 @@
 
-// var tictacApp = angular.module('tictacApp', []);
-// tictacApp.controller('TicTacController', function($scope){
+var tictacApp = angular.module('tictacApp', []);
+	tictacApp.controller('TicTacController', function ($scope) {
 
-function TicTacController($scope){
+
+	// var ticTacRef = new Firebase("https://tic-tac-thrones.firebaseio.com/games");
+
+	// 		// Note that you can use multiple references if you for instance wanted to keep
+	// 		// track of all the users on the system
+	// 		// var usersRef = new Firebase("https://fiery-fire-8597.firebaseio.com/users");
+	// 		// usersRef.push( {name:"fred"} );
+
+	// 	$scope.newGame = function(){
+	// 		// Is there a game that I can graft onto?
+	// 		ticTacRef.once("value", function(data){
+	// 			var games = data.val();	// Get the real objects out of the angularified blob
+	// 			if(games != null)
+	// 			{
+	// 				console.log(games);
+	// 				var keys = Object.keys(games);	// Get all the screwy text keys
+	// 				var lastKey = keys[keys.length - 1];	// Find the last key
+	// 				var lastGame = games[lastKey];	// Use the last key to get the last game object
+
+	// 				if(lastGame.waiting==true)
+	// 				{
+	// 					// Currently someone like JoJo is waiting to play
+	// 					// Find the Angular version of this game
+	// 					lastGame = ticTacRef.child(lastKey);
+	// 					// whoseTurn = 1 for player 1, 2 for player 2, 3 for player 1 won, 4 for player 2 won, and 5 for a draw
+	// 					lastGame.set( {waiting: false, whoseTurn: 1, board:[change to be ]} );
+	// 				}
+	// 				else
+	// 				{
+	// 					// This is like when JoJo had walked up and wanted to start playing TicTacToe
+	// 					ticTacRef.push( {waiting: true} );
+	// 				}
+	// 			}
+	// 			else // I got no game :(
+	// 			{
+	// 				// This is like when JoJo had walked up and wanted to start playing TicTacToe
+	// 				ticTacRef.push( {waiting: true} );
+	// 			}
+
+	// 		});
+
+	// 	};
+
 
 	var game = 0;
 	$scope.noMessage = true;
@@ -13,123 +55,36 @@ function TicTacController($scope){
 	// }
 
 		$scope.families1 = [
-			{
-				name: "House Stark",
-				image: "images/stark1.jpg"
-			},
-			{
-				name: "House Lannister",
-				image: "images/lannister1.jpeg"
-			},
-			{
-				name: "House Baratheon",
-				image: "images/baratheon1.jpeg"
-			},
-			{
-				name: "House Targaryen",
-				image: "images/targaryen1.jpeg"
-			},
-			{
-				name: "House Martell",
-				image: "images/martell1.jpeg"
-			},
-			{
-				name: "House Greyjoy",
-				image: "images/greyjoy1.jpeg"
-			},
-			{
-				name: "House Tully",
-				image: "images/tully1.jpeg"
-			},
-		];
+			{ name: "House Stark", image: "images/stark1.jpg" },
+			{ name: "House Lannister", image: "images/lannister1.jpeg" },
+			{ name: "House Baratheon", image: "images/baratheon1.jpeg" },
+			{ name: "House Targaryen", image: "images/targaryen1.jpeg" },
+			{ name: "House Martell", image: "images/martell1.jpeg" },
+			{ name: "House Greyjoy", image: "images/greyjoy1.jpeg" },
+			{ name: "House Tully", image: "images/tully1.jpeg" }];
 
 
 		$scope.families2 = [
-			{
-				name: "House Stark",
-				image: "images/stark2.jpg"
-			},
-			{
-				name: "House Lannister",
-				image: "images/lannister2.jpeg"
-			},
-			{
-				name: "House Baratheon",
-				image: "images/baratheon2.jpeg"
-			},
-			{
-				name: "House Targaryen",
-				image: "images/targaryen2.jpeg"
-			},
-			{
-				name: "House Martell",
-				image: "images/martell2.jpeg"
-			},
-			{
-				name: "House Greyjoy",
-				image: "images/greyjoy2.jpeg"
-			},
-			{
-				name: "House Tully",
-				image: "images/tully2.jpeg"
-			},
-		];
+			{ name: "House Stark", image: "images/stark2.jpg" },
+			{ name: "House Lannister", image: "images/lannister2.jpeg" },
+			{ name: "House Baratheon", image: "images/baratheon2.jpeg" },
+			{ name: "House Targaryen", image: "images/targaryen2.jpeg" },
+			{ name: "House Martell", image: "images/martell2.jpeg" },
+			{ name: "House Greyjoy", image: "images/greyjoy2.jpeg" },
+			{ name: "House Tully", image: "images/tully2.jpeg" }];
 
 		$scope.rows = [
-			[
-			{
-				position: "0-0",
-				empty: true,
-				xo: ' '
-			},
-			{
-				position: "0-1",
-				empty: true,
-				xo: ''
-			},
-			{
-				position: "0-2",
-				empty: true,
-				xo: ' '
-			}
-			],
+			[{ position: "0-0", empty: true, xo: ' ' },
+			{ position: "0-1", empty: true, xo: '' },
+			{ position: "0-2", empty: true, xo: ' ' } ],
 			
-			[
-			{
-				position: "1-0",
-				empty: true,
-				xo: ''
-			},
-			{
-				position: "1-1",
-				empty: true,
-				xo: ' '
-			},
-			{
-				position: "1-2",
-				empty: true,
-				xo: ''
-			}
-			],
+			[{ position: "1-0", empty: true, xo: '' },
+			{ position: "1-1", empty: true, xo: ' ' },
+			{ position: "1-2", empty: true, xo: '' }],
 						
-			[
-			{
-				position: "2-0",
-				empty: true,
-				xo: ' '
-			},
-			{
-				position: "2-1",
-				empty: true,
-				xo: ''
-			},
-			{
-				position: "2-2",
-				empty: true,
-				xo: ' '
-			}
-			]
-		];
+			[{ position: "2-0", empty: true, xo: ' ' },
+			{ position: "2-1", empty: true, xo: '' },
+			{ position: "2-2", empty: true, xo: ' ' }]];
 
 		var turn = 0;
 		var win1 = 0;
@@ -155,7 +110,15 @@ function TicTacController($scope){
 			losses: loss2
 		};
 
-		
+
+
+		$scope.newGame = function(){
+			document.getElementById("beforegame").style.display = "none";
+			document.getElementById("setusers").style.display = "block";
+			document.getElementById("user1").style.display = "block";
+			document.getElementById("user2").style.display = "block";
+		};
+
 		$scope.setPlayer1 = function(username, housename){
 			$scope.player1.username = username;
 			
@@ -166,7 +129,7 @@ function TicTacController($scope){
 			// 	$scope.player1.xo = 'O';
 			// }
 			
-			console.log($scope.player1.username);
+			console.log($scope.player1.username);			
 		};
 
 		$scope.setPlayer2 = function(username, housename){
@@ -179,7 +142,11 @@ function TicTacController($scope){
 			// 	$scope.player1.xo = 'X';
 			// }
 			console.log($scope.player2.username);
+			document.getElementById("setusers").style.display = "none";
+			document.getElementById("duringgame").style.display = "block";
 		};
+
+		
 
 
 
@@ -271,4 +238,4 @@ function TicTacController($scope){
 
 		};
 
-}
+	});
