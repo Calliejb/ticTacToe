@@ -145,7 +145,7 @@ header {
 	width: 33%;
 }
 
-.gameboard {
+#gameboard {
 	height: 700px;
 	width: 36%;
 	float: left;

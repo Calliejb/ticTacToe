@@ -7,7 +7,10 @@ function TicTacController($scope){
 	var game = 0;
 	$scope.noMessage = true;
 
-	// function newGame(){
+	// $scope.newGame = function(){
+			// 	game++;
+			// document.getElementById("gameboard").style.display = show;
+	// }
 
 		$scope.families1 = [
 			{
@@ -267,8 +270,5 @@ function TicTacController($scope){
 			}
 
 		};
-
-	// 	game++;
-	// }
 
 }

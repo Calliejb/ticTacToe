@@ -60,16 +60,21 @@
 
 			</div>
 
-			<div class = "gameboard">
+			<div class = "beforegame">
+				<div class = "newgamediv">
+					<a href="#" class="newgame" x-ng-click="newGame();">New Game</a>
+				</div>
+
+			</div>
+
+			<div id = "gameboard">
 				<div class = "row" x-ng-repeat = "r in rows"> 
 					<div class = "box" x-ng-repeat = "col in r" x-ng-click="makeMove(col);">
 						{{col.xo}}
 						 
 					</div>
 				</div>
-				<div class = "newgamediv">
-					<a href="#" class="newgame" x-ng-click="newGame();">New Game</a>
-				</div>
+				
 				
 			</div>
 
