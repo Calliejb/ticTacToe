@@ -7,23 +7,42 @@ body {
 header {
 	height: 80px;
 	text-align: left;
-	font-size: 40px;
 	padding-top: 20px;
-	padding-left: 20px;
-	font-family:"Game of Thrones";
+	background: url(images/game_of_thrones_logo.jpg);
+	border-bottom: 10px solid black;
 }
 
+.tictacthrones {
+	margin-left: 40px;
+	display: inline-block;
+	position: relative;
+	width: 500px;
+	height: 160px;
+	top: -80px;
+	background: url(images/tictacthrones1.jpg) no-repeat;
+}
+
+.tictacthrones span {
+	position: absolute;
+	top: 0; left: 0; bottom: 0; right: 0;
+	background: url(images/tictacthrones1.jpg) no-repeat;
+	background-position: 0 -96px;
+	opacity: 0;
+	-webkit-transition: opacity 0.5s;
+	-moz-transition:    opacity 0.5s;
+	-o-transition:      opacity 0.5s;
+}
+
+.tictacthrones:hover span {
+	opacity: 1;
+}
 
 #background {
 	background-image: url("images/westeros.jpg");
 	width: 100%;
-}
-
-.transluscent {
-	opacity: .7;
 	position: absolute;
-	left: 0px;
-	top: 0px;
+	top: 0;
+	left: 0;
 }
 
 
@@ -40,9 +59,9 @@ header {
 }
 
 .user1 {
-	border: 1px solid black;
 	height: 1200px;
 	width: 26%;
+	padding-top: 30px;
 	float: left;
 }
 
@@ -125,12 +144,11 @@ button.username1 {
 .wtldiv {
 	float: left;
 	width: 30px;
-	padding: 0px 20px 0px 20px;
+	padding: 0px 30px 0px 23px;
 }
 
 .gameboard {
-	border: 1px solid white;
-	height: 500px;
+	height: 700px;
 	width: 36%;
 	float: left;
 	padding-top: 100px;
@@ -140,7 +158,7 @@ button.username1 {
 
 .box {
 	float:left; 
-	font-family: verdana;
+	font-family: "Game of Thrones";
 	outline:3px solid black; 
 	width:33%;
 	height:120px; 
@@ -153,10 +171,62 @@ button.username1 {
 	clear:both;
 }
 
+.newgamediv {
+	margin-top: 120px;
+	padding-top: 20px;
+	height: 85px;
+}
+
+.newgame {
+	-moz-box-shadow:inset 0px 1px 0px 0px #f5978e;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #f5978e;
+	box-shadow:inset 0px 1px 0px 0px #f5978e;
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #f24537), color-stop(1, #c62d1f) );
+	background:-moz-linear-gradient( center top, #f24537 5%, #c62d1f 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#f24537', endColorstr='#c62d1f');
+	background-color:#f24537;
+	-webkit-border-top-left-radius:0px;
+	-moz-border-radius-topleft:0px;
+	border-top-left-radius:0px;
+	-webkit-border-top-right-radius:0px;
+	-moz-border-radius-topright:0px;
+	border-top-right-radius:0px;
+	-webkit-border-bottom-right-radius:0px;
+	-moz-border-radius-bottomright:0px;
+	border-bottom-right-radius:0px;
+	-webkit-border-bottom-left-radius:0px;
+	-moz-border-radius-bottomleft:0px;
+	border-bottom-left-radius:0px;
+	text-indent:0;
+	border:1px solid #d02718;
+	display:inline-block;
+	color:#ffffff;
+	font-family:Verdana;
+	font-size:15px;
+	font-weight:bold;
+	font-style:normal;
+	height:65px;
+	line-height:65px;
+	width:131px;
+	text-decoration:none;
+	text-align:center;
+	text-shadow:1px 1px 0px #8d182c;
+}
+.newgame:hover {
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #c62d1f), color-stop(1, #f24537) );
+	background:-moz-linear-gradient( center top, #c62d1f 5%, #f24537 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#c62d1f', endColorstr='#f24537');
+	background-color:#c62d1f;
+}.newgame:active {
+	position:relative;
+	top:1px;
+}
+/* This button was generated using CSSButtonGenerator.com */
+
 .user2 {
-	border: 1px solid black;
 	height: 1200px;
 	width: 26%;
+	padding-top: 30px;
 	float: left;
 }
 

@@ -9,10 +9,10 @@
 	<script src="script.js"></script>
 </head>
 <body x-ng-app= "" x-ng-controller= "TicTacController">
-	<div id = "background" class = "transluscent">
+	<div id = "background">
 
 		<header> 
-			TIC TAC TOE
+			<div class="tictacthrones"><span></span></a>
 		</header>
 
 		<div class = "gamepage">
@@ -22,7 +22,7 @@
 
 			<div class = "user1">
 				<div class = "username1">
-					User Name <br>
+					Enter Username <br>
 					<input type="text" x-ng-model="username1"/> <input type="button" value="Submit" x-ng-click="setPlayer1(username1)"/>
 					<p>Player 1 is {{player1.username}}</p>
 				</div>
@@ -63,8 +63,11 @@
 						 
 					</div>
 				</div>
+				<div class = "newgamediv">
+					<a href="#" class="newgame">New Game</a>
+				</div>
 				<div>
-					<h2>{{winner}} wins!! Yayyyy!!!</h2>
+					<h2> {{winner}} wins!! Yayyyy!!!</h2>
 				</div>
 			</div>
 

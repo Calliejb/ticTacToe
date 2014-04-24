@@ -148,6 +148,9 @@ function TicTacController($scope)
 		losses: loss2
 	};
 
+	$scope.startGame = function(){
+		
+	}
 	
 	$scope.setPlayer1 = function(username){
 		$scope.player1.username = username;
