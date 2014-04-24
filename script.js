@@ -1,10 +1,11 @@
 
-// var gameApp = angular.module('gameApp', []);
-// gameApp.controller('GameController', function($scope){
+// var tictacApp = angular.module('tictacApp', []);
+// tictacApp.controller('TicTacController', function($scope){
 
 function TicTacController($scope){
 
 	var game = 0;
+	$scope.noMessage = true;
 
 	// function newGame(){
 
@@ -206,92 +207,63 @@ function TicTacController($scope){
 				if($scope.rows[0][0].xo == $scope.rows[1][0].xo && $scope.rows[1][0].xo == $scope.rows[2][0].xo) {
 					console.log("left column");
 					console.log($scope.rows[0][0].xo + " wins!");
-					if($scope.rows[0][0].xo == 'X'){
-						$scope.winner=$scope.player1.username;
-						$scope.house=$scope.family1.name;
-					} else if($scope.rows[0][0].xo == 'O'){
-						$scope.winner=$scope.player2.username;
-						$scope.house=$scope.family2.name;
-					}
+					declareWinner($scope.rows[0][0].xo);
 				} else if($scope.rows[0][1].xo == $scope.rows[1][1].xo && $scope.rows[1][1].xo == $scope.rows[2][1].xo) {
 					console.log("middle column");
 					console.log($scope.rows[0][1].xo + " wins!");
-					if($scope.rows[0][1].xo == 'X'){
-						$scope.winner=$scope.player1.username;
-						$scope.house=$scope.family1.name;
-					} else if($scope.rows[0][1].xo == 'O'){
-						$scope.winner=$scope.player2.username;
-						$scope.house=$scope.family2.name;
-					}
+					declareWinner($scope.rows[0][1].xo);
 				} else if($scope.rows[0][2].xo == $scope.rows[1][2].xo && $scope.rows[1][2].xo == $scope.rows[2][2].xo) {
 					console.log("right column");
 					console.log($scope.rows[0][2].xo + " wins!");
-					if($scope.rows[0][2].xo == 'X'){
-						$scope.winner=$scope.player1.username;
-						$scope.house=$scope.family1.name;
-					} else if($scope.rows[0][2].xo == 'O'){
-						$scope.winner=$scope.player2.username;
-						$scope.house=$scope.family2.name;
-					}
+					declareWinner($scope.rows[0][0].xo);
 				} else if($scope.rows[0][0].xo == $scope.rows[0][1].xo && $scope.rows[0][1].xo == $scope.rows[0][2].xo) {
 					console.log("top row");
 					console.log($scope.rows[0][0].xo + " wins!");
-					if($scope.rows[0][0].xo == 'X'){
-						$scope.winner=$scope.player1.username;
-						$scope.house=$scope.family1.name;
-					} else if($scope.rows[0][0].xo == 'O'){
-						$scope.winner=$scope.player2.username;
-						$scope.house=$scope.family2.name;
-					}
+					declareWinner($scope.rows[0][0].xo);
 				} else if($scope.rows[1][0].xo == $scope.rows[1][1].xo && $scope.rows[1][1].xo == $scope.rows[1][2].xo) {
 					console.log("middle row");
 					console.log($scope.rows[1][0] + " wins!");
-					if($scope.rows[1][0].xo == 'X'){
-						$scope.winner=$scope.player1.username;
-						$scope.house=$scope.family1.name;
-					} else if($scope.rows[1][0].xo == 'O'){
-						$scope.winner=$scope.player2.username;
-						$scope.house=$scope.family2.name;
-					}
+					declareWinner($scope.rows[1][0].xo);
 				} else if($scope.rows[2][0].xo == $scope.rows[2][1].xo && $scope.rows[2][1].xo == $scope.rows[2][2].xo) {
 					console.log("bottom row");
 					console.log($scope.rows[2][0].xo + " wins!");
-					if($scope.rows[2][0].xo == 'X'){
-						$scope.winner=$scope.player1.username;
-						$scope.house=$scope.family1.name;
-					} else if($scope.rows[2][0].xo == 'O'){
-						$scope.winner=$scope.player2.username;
-						$scope.house=$scope.family2.name;
-					}
+					declareWinner($scope.rows[2][0].xo);
 				} else if($scope.rows[0][0].xo == $scope.rows[1][1].xo && $scope.rows[1][1].xo == $scope.rows[2][2].xo) {
 					console.log("diagonal left");
 					console.log($scope.rows[0][0].xo + " wins!");
-					if($scope.rows[0][0].xo == 'X'){
-						$scope.winner=$scope.player1.username;
-						$scope.house=$scope.family1.name;
-					} else if($scope.rows[0][0].xo == 'O'){
-						$scope.winner=$scope.player2.username;
-						$scope.house=$scope.family1.name;
-					}
+					declareWinner($scope.rows[0][0].xo);
 				} else if($scope.rows[0][2].xo == $scope.rows[1][1].xo && $scope.rows[1][1].xo == $scope.rows[2][0].xo) {
 					console.log("diagonal right");
 					console.log($scope.rows[0][2].xo + "wins!");
-					if($scope.rows[0][2].xo == 'X'){
-						$scope.winner=$scope.player1.username;
-						$scope.house=$scope.family1.name;
-					} else if($scope.rows[0][2].xo == 'O'){
-						$scope.winner=$scope.player2.username;
-						$scope.house=$scope.family1.name;
-					}
+					declareWinner($scope.rows[0][2].xo);
 				} else {
-					return false;
+					declareWinner("tie");
 				}
 
-			}
+				function declareWinner(winLetter) {
+					if(winLetter == 'X'){
+						$scope.winner=$scope.player1.username;
+						//Don't forget to set your house! Or name will show up undefined
+						$scope.house=$scope.family1.name;
+						$scope.noMessage = false;
+						$scope.isPlayer1 = true;
+						win1 ++;
+						loss2 ++;
+					} else if(winLetter == 'O'){
+						$scope.winner=$scope.player2.username;
+						$scope.house=$scope.family2.name;
+						$scope.noMessage = false;
+						$scope.isPlayer2 = true;
+						win2 ++;
+						loss1 ++;
+					} else if(turn == 9 && winLetter == 'tie'){
+						$scope.noMessage = false;
+						$scope.isTie = true;
+						console.log("check for win is a tie");
+						tie ++;
+					}
+				}
 
-			if(turn == 9 && checkForWin() === false) {
-				console.log("It's a tie!");
-				tie++;
 			}
 
 		};
@@ -300,42 +272,3 @@ function TicTacController($scope){
 	// }
 
 }
-		
-
-		// maybe do a recursive function! 
-		// if obj is top-left -- check top-center -- if top-center is empty or
-		// = opposite letter -- check middle-center -- if middle-center 
-		// is empty or = opposite letter -- check middle-left -- 
-		// if middle-left is empty or = opposite letter -- return FALSE
-
-// Example of a RECURSIVE function
-// var simpsons = ["Maggie",["Monty", ["Waylan", "Homer", ["Lisa", "Bart"], "Quimby", ["Wiggam", ["Eddie", "Lou"]]]]];
-
-// function parseLayer(ary)
-// {
-// 	for(var i = 0; i < ary.length ; i++)
-// 	{
-// 		if(ary[i] instanceof Array)
-// 			parseLayer(ary[i]);
-// 		else
-// 			alert(ary[i]);
-// 	}
-// }
-
-// parseLayer(simpsons);
-// 	}
-
-
-
-	
-		// if(col == false) {
-		// 	$scope.col = obj + "X";
-		// }
-
-		// $scope.col.xo = clickXO;
-		// $scope.col.empty = false;
-
-
-	// function clickXO(xo) {
-
-	// }

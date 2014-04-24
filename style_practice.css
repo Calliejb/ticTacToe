@@ -13,8 +13,20 @@ header {
 	font-family: "Game of Thrones";
 }
 
-.winnermessage {
+.nomessage {
+	display: none;
+}
+
+.winnermessage1 {
 	float: right;
+}
+
+.winnermessage2 {
+	float: right;
+}
+
+.tiemessage {
+	display: none;
 }
 
 .tictacthrones {

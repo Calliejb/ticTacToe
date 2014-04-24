@@ -13,8 +13,8 @@
 
 		<header> 
 			<div class="tictacthrones"><span></span></div>
-			<div class = "winnermessage">
-				<h3> {{winner}} from {{house}} is victorious!! Yayyyy!!!</h3>
+			<div x-ng-class= "{'nomessage': noMessage, 'winnermessage1': isPlayer1, 'winnermessage2': isPlayer2, 'tiemessage': isTie}">
+				<h3> {{winner}} from {{house}} is victorious!!</h3>
 			</div>
 		</header>
 
