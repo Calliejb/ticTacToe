@@ -144,11 +144,8 @@ var tictacApp = angular.module('tictacApp', []);
 			console.log($scope.player2.username);
 			document.getElementById("setusers").style.display = "none";
 			document.getElementById("duringgame").style.display = "block";
+			document.getElementById("restartgame").style.display = "block";
 		};
-
-		
-
-
 
 		$scope.makeMove = function(obj){
 		
@@ -237,5 +234,18 @@ var tictacApp = angular.module('tictacApp', []);
 			}
 
 		};
+
+		$scope.restartGame = function(){
+			$scope.rows[0][0].xo = '';
+			$scope.rows[0][1].xo = '';
+			$scope.rows[0][2].xo = '';
+			$scope.rows[1][0].xo = '';
+			$scope.rows[1][1].xo = '';
+			$scope.rows[1][2].xo = '';
+			$scope.rows[2][0].xo = '';
+			$scope.rows[2][1].xo = '';
+			$scope.rows[2][2].xo = '';
+			document.getElementById("winmessage").style.display = "none";
+		}
 
 	});

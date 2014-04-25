@@ -13,16 +13,20 @@
 
 		<header> 
 			<div class="tictacthrones"><span></span></div>
-			<div x-ng-class= "{'nomessage': noMessage, 'winnermessage1': isPlayer1, 'winnermessage2': isPlayer2, 'tiemessage': isTie}">
-				<h3> {{winner}} from {{house}} is victorious!!</h3>
-			</div>
 		</header>
 
+		<div id = "beforegame">
+			<div class = "newgamediv">
+				<a href="#" class="newgame" x-ng-click="newGame();">New Game</a>
+			</div>
+		</div>
+
+<!-- Gamepage Container -->
 		<div class = "gamepage">
-			
+			<!-- Column 1 -->
 			<div class = "col1">
 			</div>
-
+			<!-- Column 2 -->
 			<div class = "col2">
 				<div id = "user1">
 					<div class = "username1">
@@ -61,33 +65,38 @@
 				</div>
 			</div>
 
+			<!-- Column 3 -->
 			<div id = "gameboard">
-
-				<div id = "beforegame">
-					<div class = "newgamediv">
-						<a href="#" class="newgame" x-ng-click="newGame();">New Game</a>
-					</div>
-				</div>
 
 				<div id = "setusers">
 					<h2> Choose your user name and house! </h2>
 				</div>
 
 				<div id = "duringgame">
-				<div class = "row" x-ng-repeat = "r in rows"> 
-					<div class = "box" x-ng-repeat = "col in r" x-ng-click="makeMove(col);">
-						{{col.xo}}
+					<div class = "row" x-ng-repeat = "r in rows"> 
+						<div class = "box" x-ng-repeat = "col in r" x-ng-click="makeMove(col);">
+							{{col.xo}}
 						 
+						</div>
 					</div>
 				</div>
-			</div>
-				
-				
-			</div>
-			
+
+				<div id = "restartgame">
+					<div class = "newgamediv">
+						<a href="#" class="newgame" x-ng-click="restartGame();">New Game</a>
+					</div>
+				</div>
+
+				<div id = "winmessage">
+					<div x-ng-class= "{'nomessage': noMessage, 'winnermessage1': isPlayer1, 'winnermessage2': isPlayer2, 'tiemessage': isTie}">
+					<h3> {{winner}} from {{house}} is victorious!!</h3>
+					</div>
+				</div>
+			</div>	
+
+			<!-- Column 4 -->
 			<div class = "col4">
 				<div id = "user2">
-
 					<div class = "username2">
 						Enter Username: <br>
 						<input type="text" x-ng-model="username2"/> <input type="button" value="Submit" x-ng-click="setPlayer2(username2, f.name)"/>
@@ -120,9 +129,10 @@
 							<img x-ng-src= "{{ family2.image}} " />
 						</div>
 					</div>
-				</div>
+				</div>	
 			</div>
-
+			
+			<!-- Column 5 -->
 			<div class = "col5">
 			</div>
 		</div>

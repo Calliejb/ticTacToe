@@ -6,24 +6,28 @@ body {
 
 header {
 	height: 80px;
+	width: 100%;
 	text-align: left;
 	padding-top: 20px;
 	background: url(images/game_of_thrones_logo.jpg);
 	border-bottom: 10px solid black;
 	font-family: "Game of Thrones";
+	position: fixed;
+	z-index: 10;
 }
 
 .nomessage {
 	display: none;
+	position: absolute;
 }
 
 .winnermessage1 {
-	float: right;
+	font-size: 18px;
 	position: absolute;
 }
 
 .winnermessage2 {
-	float: right;
+	font-size: 18px;
 	position: absolute;
 }
 
@@ -60,7 +64,7 @@ header {
 }
 
 #background {
-	background-image: url("images/westeros.jpg");
+	background-color: rgb(50, 50, 50);
 	width: 100%;
 	position: absolute;
 	top: 0;
@@ -72,6 +76,7 @@ header {
 	max-width: 1300px;
 	/*Figure this out!!! The opacity of the text and borders*/
 	opacity: none;
+	margin-top: 90px;
 }
 
 .col1 {
@@ -124,7 +129,6 @@ header {
 	overflow-y: hidden;
 	width: 100%;
 	height: 700px;
-	border: 1px solid black;
 	margin-top: 30px;
 	display: inline-block;
 	position: relative;
@@ -156,18 +160,24 @@ header {
 
 
 #gameboard {
-	height: 700px;
+	background-image:url(images/westeros.jpg);
+	background-size: contain;
+	background-repeat: no-repeat;
+	height: 600px;
 	width: 36%;
 	float: left;
-	padding-top: 100px;
+	padding-top: 70px;
 	padding-left: 2%;
 	padding-right: 2%;
+	margin-top: 50px;
 }
 
 #beforegame {
-	width: 36%;
+	width: 100%;
+	height: 1300px;
 	position: absolute;
 	text-align: center;
+	background-image:url(images/westeros.jpg);
 }
 
 #duringgame {
@@ -178,21 +188,24 @@ header {
 	display: none;
 }
 
+#restartgame {
+	display: none;
+}
+
 .box {
 	float:left; 
 	font-family: "Game of Thrones";
 	outline:3px solid black; 
 	width:33%;
-	height:120px; 
+	height:110px;
 	background-color:transparent; 
 	font-size:40pt;
 	text-align: center;
 	line-height: 130px;
-	box-shadow: 0px 0px 5px 0px #ccc;;
 }
 
 .box:hover {
-	background-color: rgba(130, 100, 100, .7);
+	background-color: rgba(110, 100, 100, .7);
 }
 .row {
 	clear:both;
@@ -250,6 +263,13 @@ header {
 }
 /* This button was generated using CSSButtonGenerator.com */
 
+#winmessage {
+	display: block;
+	width: 100%;
+	height: 75px;
+	position: absolute;
+}
+
 .col4 {
 	height: 1200px;
 	width: 26%;
@@ -267,7 +287,6 @@ header {
 	overflow-y: hidden;
 	width: 100%;
 	height: 700px;
-	border: 1px solid black;
 	margin-top: 30px;
 	display: inline-block;
 	position: relative;
