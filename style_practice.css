@@ -158,6 +158,14 @@ header {
 	width: 33%;
 }
 
+#beforegame {
+	width: 100%;
+	height: 1300px;
+	position: absolute;
+	padding-top: 250px;
+	text-align: center;
+	background-image:url(images/westeros.jpg);
+}
 
 #gameboard {
 	background-image:url(images/westeros.jpg);
@@ -170,14 +178,6 @@ header {
 	padding-left: 2%;
 	padding-right: 2%;
 	margin-top: 50px;
-}
-
-#beforegame {
-	width: 100%;
-	height: 1300px;
-	position: absolute;
-	text-align: center;
-	background-image:url(images/westeros.jpg);
 }
 
 #duringgame {

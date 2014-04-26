@@ -6,6 +6,8 @@
 	<link rel = "stylesheet" href = "style_practice.css">
 
 	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
+	<script src="https://cdn.firebase.com/v0/firebase.js"></script>
+ 	<script src="https://cdn.firebase.com/libs/angularfire/0.6.0/angularfire.min.js"></script>
 	<script src="script.js"></script>
 </head>
 <body x-ng-controller= "TicTacController">
@@ -17,7 +19,7 @@
 
 		<div id = "beforegame">
 			<div class = "newgamediv">
-				<a href="#" class="newgame" x-ng-click="newGame();">New Game</a>
+				<a href="#" class="newgame" x-ng-click="startGame();">Start Game</a>
 			</div>
 		</div>
 
@@ -32,7 +34,7 @@
 					<div class = "username1">
 						Enter Username: <br>
 						<input type="text" x-ng-model="username1"/> <input type="button" value="Submit" x-ng-click="setPlayer1(username1, f.name)" />
-						<p>Player 1 is {{player1.username}}</p>
+						<div id = "user1message"></p>Enter your username! Player 1 is {{game.player1.username}}. Waiting for Player 2!</p></div>
 					</div>
 
 					<label class="label">Choose your House: </label>
@@ -47,15 +49,15 @@
 						<div class = "wtl">
 							<div class = "wtldiv">
 								<h3>W</h3>
-								<p> {{player1.wins}} </p>
+								<p> {{game.player1.wins}} </p>
 							</div>
 							<div class = "wtldiv">
 								<h3>T</h3>
-								<p> {{player1.ties}} </p>
+								<p> {{game.player1.ties}} </p>
 							</div>
 							<div class = "wtldiv">
 								<h3>L</h3>
-								<p> {{player1.losses}} </p>
+								<p> {{game.player1.losses}} </p>
 							</div>
 						</div>
 						<div class ="family1-image">
@@ -73,10 +75,9 @@
 				</div>
 
 				<div id = "duringgame">
-					<div class = "row" x-ng-repeat = "r in rows"> 
+					<div class = "row" x-ng-repeat = "r in game.rows"> 
 						<div class = "box" x-ng-repeat = "col in r" x-ng-click="makeMove(col);">
 							{{col.xo}}
-						 
 						</div>
 					</div>
 				</div>
@@ -100,13 +101,12 @@
 					<div class = "username2">
 						Enter Username: <br>
 						<input type="text" x-ng-model="username2"/> <input type="button" value="Submit" x-ng-click="setPlayer2(username2, f.name)"/>
-						<p>Player 2 is {{player2.username}}</p>
+						<p>Player 2 is {{game.player2.username}}</p>
 					</div>
 
 					<label class="label">Choose your House: </label>
 					<div class = "dropdown">
 						<select class = "selectFamily" ng-options="f.name for f in families2" x-ng-model="family2">
-							</option>
 						</select>
 					</div>
 
@@ -114,15 +114,15 @@
 						<div class = "wtl">
 							<div class = "wtldiv">
 								<h3>W</h3>
-								<p> {{player2.wins}} </p>
+								<p> {{game.player2.wins}} </p>
 							</div>
 							<div class = "wtldiv">
 								<h3>T</h3>
-								<p> {{player2.ties}} </p>
+								<p> {{game.player2.ties}} </p>
 							</div>
 							<div class = "wtldiv">
 								<h3>L</h3>
-								<p> {{player2.losses}}</p>
+								<p> {{game.player2.losses}}</p>
 							</div>
 						</div>
 						<div class = "family-image2">

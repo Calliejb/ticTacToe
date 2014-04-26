@@ -1,0 +1,5 @@
+{
+  "firebase": "tic-tac-thrones",
+  "public": "app",
+  "rules": "config/security-rules.json"
+}
