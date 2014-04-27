@@ -11,13 +11,13 @@
 	<script src="script.js"></script>
 </head>
 <body x-ng-controller= "TicTacController">
-	<div id = "background">
+	<div class = "background">
 
 		<header> 
 			<div class="tictacthrones"><span></span></div>
 		</header>
 
-		<div id = "beforegame">
+		<div class = "beforegame" x-ng-show="game.gameState == 0">
 			<div class = "newgamediv">
 				<a href="#" class="newgame" x-ng-click="startGame();">Start Game</a>
 			</div>
@@ -29,52 +29,62 @@
 			<div class = "col1">
 			</div>
 			<!-- Column 2 -->
-			<div class = "col2">
-				<div id = "user1">
-					<div class = "username1">
-						Enter Username: <br>
-						<input type="text" x-ng-model="username1"/> <input type="button" value="Submit" x-ng-click="setPlayer1(username1, f.name)" />
-						<div id = "user1message"></p>Enter your username! Player 1 is {{game.player1.username}}. Waiting for Player 2!</p></div>
-					</div>
+			<div class = "col2" x-ng-show="game.gameState > 0">
+					
+				<div class ="family1-image">
+					<img x-ng-src= "{{game.player1.houseimage}} " />
+				</div>
 
-					<label class="label">Choose your House: </label>
-					<div class = "dropdown">
-						<select class = "selectFamily" ng-options="f.name for f in families1" x-ng-model="family1">	
-						</select>
-					</div>
+				<div class = "user1">
 
-
-					<div class = "house1" >
-						<!-- x-ng-click="seeScores();" -->
-						<div class = "wtl">
-							<div class = "wtldiv">
-								<h3>W</h3>
-								<p> {{game.player1.wins}} </p>
-							</div>
-							<div class = "wtldiv">
-								<h3>T</h3>
-								<p> {{game.player1.ties}} </p>
-							</div>
-							<div class = "wtldiv">
-								<h3>L</h3>
-								<p> {{game.player1.losses}} </p>
-							</div>
+					<div class = "user1info" x-ng-show="game.gameState < 2">
+						<label class="label">Choose your House: </label>
+						
+						<div class = "dropdown">
+							<select class = "selectFamily" ng-options="f.name for f in families1" x-ng-model="family1">	
+							</select>
 						</div>
-						<div class ="family1-image">
-							<img x-ng-src= "{{family1.image}} " />
+
+						<div class = "username1">
+							Enter Username: <br>
+							<input type="text" x-ng-model="game.username1"/> <br>
+
+							<input type="button" value="Submit" x-ng-click="setPlayer1(game.username1, family1.name, family1.image)" x-ng-show="game.gameState < 3"/>
+							
+							<div id = "user1message" x-ng-show="game.gameState == 2">
+								</p><span x-ng-show= "game.gameState > 2">Player 1 is {{game.player1.username}}. </span> <span x-ng-show="game.waiting"> Waiting for Player 2!</span></p>
+							</div>
 						</div>
 					</div>
 				</div>
+
+
+				
+				<!-- x-ng-click="seeScores();" -->
+				<div class = "wtl">
+					<div class = "wtldiv">
+						<h3>W</h3>
+						<p> {{game.player1.wins}} </p>
+					</div>
+					<div class = "wtldiv">
+						<h3>T</h3>
+						<p> {{game.player1.ties}} </p>
+					</div>
+					<div class = "wtldiv">
+						<h3>L</h3>
+						<p> {{game.player1.losses}} </p>
+					</div>
+				</div>		
 			</div>
 
 			<!-- Column 3 -->
-			<div id = "gameboard">
+			<div class = "gameboard">
 
-				<div id = "setusers">
-					<h2> Choose your user name and house! </h2>
+				<div class = "setusers" x-ng-show= "game.gameState < 3">
+					<h2> Choose your house and enter in a username. </h2>
 				</div>
 
-				<div id = "duringgame">
+				<div class = "duringgame" x-ng-show= "game.gameState == 3">
 					<div class = "row" x-ng-repeat = "r in game.rows"> 
 						<div class = "box" x-ng-repeat = "col in r" x-ng-click="makeMove(col);">
 							{{col.xo}}
@@ -82,13 +92,13 @@
 					</div>
 				</div>
 
-				<div id = "restartgame">
+				<div class = "restartgame" x-ng-show= "game.gameState == 4">
 					<div class = "newgamediv">
 						<a href="#" class="newgame" x-ng-click="restartGame();">New Game</a>
 					</div>
 				</div>
 
-				<div id = "winmessage">
+				<div class = "winmessage" x-ng-show= "game.gameState == 4">
 					<div x-ng-class= "{'nomessage': noMessage, 'winnermessage1': isPlayer1, 'winnermessage2': isPlayer2, 'tiemessage': isTie}">
 					<h3> {{winner}} from {{house}} is victorious!!</h3>
 					</div>
@@ -96,40 +106,47 @@
 			</div>	
 
 			<!-- Column 4 -->
-			<div class = "col4">
-				<div id = "user2">
-					<div class = "username2">
-						Enter Username: <br>
-						<input type="text" x-ng-model="username2"/> <input type="button" value="Submit" x-ng-click="setPlayer2(username2, f.name)"/>
-						<p>Player 2 is {{game.player2.username}}</p>
-					</div>
-
-					<label class="label">Choose your House: </label>
-					<div class = "dropdown">
-						<select class = "selectFamily" ng-options="f.name for f in families2" x-ng-model="family2">
-						</select>
-					</div>
-
-					<div class = "house2">
-						<div class = "wtl">
-							<div class = "wtldiv">
-								<h3>W</h3>
-								<p> {{game.player2.wins}} </p>
-							</div>
-							<div class = "wtldiv">
-								<h3>T</h3>
-								<p> {{game.player2.ties}} </p>
-							</div>
-							<div class = "wtldiv">
-								<h3>L</h3>
-								<p> {{game.player2.losses}}</p>
-							</div>
-						</div>
-						<div class = "family-image2">
-							<img x-ng-src= "{{ family2.image}} " />
-						</div>
-					</div>
+			<div class = "col4" x-ng-show = "game.gameState > 0">
+				
+				<div class = "family-image2">
+					<img x-ng-src= "{{ game.player2.houseimage }} " />
 				</div>	
+
+				<div class = "user2">	
+					
+					<div class = "user2info" x-ng-show = "game.gameState < 3">
+						<label class="label">Choose your House: </label>
+						<div class = "dropdown">
+							<select class = "selectFamily" ng-options="f.name for f in families2" x-ng-model="family2">
+							</select>
+						</div>
+
+						<div class = "username2">
+							Enter Username: <br>
+							<input type="text" x-ng-model="game.username2"/> <br>
+
+							<input type="button" value="Submit" x-ng-click="setPlayer2(game.username2, family2.name, family2.image)"/>
+								<p x-ng-show="game.gameState > 3">Player 2 is {{game.player2.username}}</p>
+						</div>
+					</div>
+				</div>
+
+					
+					<div class = "wtl">
+						<div class = "wtldiv">
+							<h3>W</h3>
+							<p> {{game.player2.wins}} </p>
+						</div>
+						<div class = "wtldiv">
+							<h3>T</h3>
+							<p> {{game.player2.ties}} </p>
+						</div>
+						<div class = "wtldiv">
+							<h3>L</h3>
+							<p> {{game.player2.losses}}</p>
+						</div>
+					</div>
+					
 			</div>
 			
 			<!-- Column 5 -->
