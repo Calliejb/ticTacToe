@@ -51,10 +51,9 @@
 
 							<input type="button" value="Submit" x-ng-click="setPlayer1(game.username1, family1.name, family1.image)" x-ng-show="game.gameState < 3"/>
 							
-							<div id = "user1message" x-ng-show="game.gameState == 2">
-								</p><span x-ng-show= "game.gameState > 2">Player 1 is {{game.player1.username}}. </span> <span x-ng-show="game.waiting"> Waiting for Player 2!</span></p>
-							</div>
 						</div>
+
+						
 					</div>
 				</div>
 
@@ -74,7 +73,10 @@
 						<h3>L</h3>
 						<p> {{game.player1.losses}} </p>
 					</div>
-				</div>		
+				</div>
+
+
+				
 			</div>
 
 			<!-- Column 3 -->
@@ -84,31 +86,76 @@
 					<h2> Choose your house and enter in a username. </h2>
 				</div>
 
+				<p x-ng-show="game.waiting"> Waiting for Player 2!</p>
+
+				<p x-ng-show= "game.gameState == 2">Player 1 is {{game.player1.username}}. </p>
+
 				<div class = "duringgame" x-ng-show= "game.gameState == 3">
 					<div class = "row" x-ng-repeat = "r in game.rows"> 
 						<div class = "box" x-ng-repeat = "col in r" x-ng-click="makeMove(col);">
 							{{col.xo}}
 						</div>
 					</div>
+					<p class = "vs"> {{game.player1.username}}  vs.  {{game.player2.username}} <br> Game {{game.gameNum}} </p>
+
+					<p x-ng-if = "game.turn % 2 == 0"> {{game.player1.username}} it is your turn. </p>
+					<p x-ng-if = "game.turn % 2 == 1"> {{game.player2.username}} it is your turn. </p>
+
 				</div>
 
-				<div class = "restartgame" x-ng-show= "game.gameState == 4">
+				<div class = "winmessage" x-ng-show= "game.gameState == 4">
+					<h3> {{game.winner}} from {{game.house}} is victorious!!</h3>
+				</div>
+				<div class = "tiemessage" x-ng-show = "game.gameState ==5">
+					<h3> Neither player has won. May your efforts be awarded in the next battle. </h3>
+				</div>
+
+				<div class = "duringwin" x-ng-show="game.gameState == 4">
+					<div x-ng-if = "game.house == 'House Stark'">
+						<img src = "images/stark-win.gif" />
+					</div>
+					<div x-ng-if = "game.house == 'House Lannister'">
+						<img src = "images/lannister-win.gif" />
+					</div>
+					<div x-ng-if = "game.house == 'House Baratheon'">
+						<img src = "images/baratheon-win.gif" />
+					</div>
+					<div x-ng-if = "game.house == 'House Targaryen'">
+						<img src = "images/targaryen-win.gif" />
+					</div>
+					<div x-ng-if = "game.house == 'House Arryn'">
+						<img src = "images/arryn-win.gif" />
+					</div>
+					<div x-ng-if = "game.house == 'House Tyrell'">
+						<img src = "images/tyrell-win.gif" />
+					</div>
+					<div x-ng-if = "game.house == 'House Martell'">
+						<img src = "images/martell-win.gif" />
+					</div>
+					<div x-ng-if = "game.house == 'House Greyjoy'">
+						<img src = "images/greyjoy-win.gif" />
+					</div>
+					<div x-ng-if = "game.house == 'House Tully'">
+						<img src = "images/tully-win.gif" />
+					</div>
+
+				</div>
+
+				<div class = "restartgame" x-ng-show= "game.gameState >= 4">
 					<div class = "newgamediv">
 						<a href="#" class="newgame" x-ng-click="restartGame();">New Game</a>
 					</div>
 				</div>
 
-				<div class = "winmessage" x-ng-show= "game.gameState == 4">
-					<div x-ng-class= "{'nomessage': noMessage, 'winnermessage1': isPlayer1, 'winnermessage2': isPlayer2, 'tiemessage': isTie}">
-					<h3> {{winner}} from {{house}} is victorious!!</h3>
-					</div>
-				</div>
+
+
+			
 			</div>	
 
 			<!-- Column 4 -->
-			<div class = "col4" x-ng-show = "game.gameState > 0">
+			<div class = "col4" x-ng-show = "game.gameState > 1">
 				
-				<div class = "family-image2">
+				<div class = "family2-image">
 					<img x-ng-src= "{{ game.player2.houseimage }} " />
 				</div>	
 
@@ -126,7 +173,7 @@
 							<input type="text" x-ng-model="game.username2"/> <br>
 
 							<input type="button" value="Submit" x-ng-click="setPlayer2(game.username2, family2.name, family2.image)"/>
-								<p x-ng-show="game.gameState > 3">Player 2 is {{game.player2.username}}</p>
+								
 						</div>
 					</div>
 				</div>

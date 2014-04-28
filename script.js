@@ -3,16 +3,12 @@ var tictacApp = angular.module('tictacApp', ['firebase']);
 
 	tictacApp.controller('TicTacController', function ($scope, $firebase) {
 
-	var game = 0;
-	var win1 = 0;
-	var win2 = 0;
-	var loss1 = 0;
-	var loss2 = 0;
-	var tie = 0;
-	$scope.noMessage = true;
-	$scope.playerNum = null;
+	
 
-	var tictacRef = new Firebase("https://tic-tac-thrones.firebaseio.com/games");
+	$scope.playerNum = null;
+	$scope.tieGame = 9;
+
+	var tictacRef = new Firebase("https://tic-tac-thrones2.firebaseio.com/games");
 
 
 		
@@ -31,9 +27,9 @@ var tictacApp = angular.module('tictacApp', ['firebase']);
 							xo: '',
 							house: '',
 							houseimage: '',
-							wins: win1,
-							ties: tie,
-							losses: loss1 } 
+							wins: 0,
+							ties: 0,
+							losses: 0 } 
 						});
 				$scope.playerNum = 1;
 					
@@ -67,9 +63,12 @@ var tictacApp = angular.module('tictacApp', ['firebase']);
 							xo: '',
 							house: '',
 							houseimage: '',
-							wins: win2,
-							ties: tie,
-							losses: loss2 },
+							wins: 0,
+							ties: 0,
+							losses: 0 },
+						winner: '',
+						house:'',
+						gameNum: 1
 					});
 
 				} else {
@@ -80,9 +79,9 @@ var tictacApp = angular.module('tictacApp', ['firebase']);
 						player1: {
 							username: '',
 							xo: '',
-							wins: win1,
-							ties: tie,
-							losses: loss1 } }
+							wins: 0,
+							ties: 0,
+							losses: 0 } }
 				);
 					$scope.playerNum = 1;				
 			
@@ -112,24 +111,22 @@ var tictacApp = angular.module('tictacApp', ['firebase']);
 
 
 		$scope.families2 = [
-			{ name: "House Stark", image: "images/stark2.jpg" },
-			{ name: "House Lannister", image: "images/lannister2.jpeg" },
-			{ name: "House Baratheon", image: "images/baratheon2.jpeg" },
-			{ name: "House Targaryen", image: "images/targaryen2.jpeg" },
+			{ name: "House Stark", image: "images/stark1.jpg" },
+			{ name: "House Lannister", image: "images/lannister1.jpg" },
+			{ name: "House Baratheon", image: "images/baratheon1.jpg" },
+			{ name: "House Targaryen", image: "images/targaryen1.jpg" },
 			{ name: "House Arryn", image: "images/arryn1.jpg"},
 			{ name: "House Tyrell", image:"images/tyrell1.jpg"},
-			{ name: "House Martell", image: "images/martell2.jpeg" },
-			{ name: "House Greyjoy", image: "images/greyjoy2.jpeg" },
-			{ name: "House Tully", image: "images/tully2.jpeg" }];
+			{ name: "House Martell", image: "images/martell1.jpg" },
+			{ name: "House Greyjoy", image: "images/greyjoy1.jpg" },
+			{ name: "House Tully", image: "images/tully1.jpg" }];
 
 		$scope.setPlayer1 = function(username, housename, houseimage){
 			$scope.game.player1.username = username;
 			$scope.game.player1.xo = 'X';
 			$scope.game.player1.house = housename;
 			$scope.game.player1.houseimage = houseimage;
-			console.log($scope.game.player1.username);
-			console.log($scope.game.player1.xo);
-			console.log($scope.game.player1.house);
+
 			$scope.game.gameState = 2;
 			$scope.game.$save();
 		};
@@ -139,11 +136,8 @@ var tictacApp = angular.module('tictacApp', ['firebase']);
 			$scope.game.player2.xo = 'O';
 			$scope.game.player2.house = housename;
 			$scope.game.player2.houseimage = houseimage;
-			console.log($scope.game.player2.username);
+
 			$scope.game.gameState = 3;
-			
-			// document.getElementById("duringgame").style.display = "block";
-			// document.getElementById("setusers").style.display = "none";	
 			$scope.game.$save();
 		};
 
@@ -176,63 +170,51 @@ var tictacApp = angular.module('tictacApp', ['firebase']);
 			function checkForWin() {
 				if($scope.game.rows[0][0].xo == $scope.game.rows[1][0].xo && $scope.game.rows[1][0].xo == $scope.game.rows[2][0].xo) {
 					console.log("left column");
-					console.log($scope.game.rows[0][0].xo + " wins!");
 					declareWinner($scope.game.rows[0][0].xo);
 				} else if($scope.game.rows[0][1].xo == $scope.game.rows[1][1].xo && $scope.game.rows[1][1].xo == $scope.game.rows[2][1].xo) {
 					console.log("middle column");
-					console.log($scope.game.rows[0][1].xo + " wins!");
 					declareWinner($scope.game.rows[0][1].xo);
 				} else if($scope.game.rows[0][2].xo == $scope.game.rows[1][2].xo && $scope.game.rows[1][2].xo == $scope.game.rows[2][2].xo) {
 					console.log("right column");
-					console.log($scope.game.rows[0][2].xo + " wins!");
 					declareWinner($scope.game.rows[0][0].xo);
 				} else if($scope.game.rows[0][0].xo == $scope.game.rows[0][1].xo && $scope.game.rows[0][1].xo == $scope.game.rows[0][2].xo) {
 					console.log("top row");
-					console.log($scope.game.rows[0][0].xo + " wins!");
 					declareWinner($scope.game.rows[0][0].xo);
 				} else if($scope.game.rows[1][0].xo == $scope.game.rows[1][1].xo && $scope.game.rows[1][1].xo == $scope.game.rows[1][2].xo) {
 					console.log("middle row");
-					console.log($scope.game.rows[1][0] + " wins!");
 					declareWinner($scope.game.rows[1][0].xo);
 				} else if($scope.game.rows[2][0].xo == $scope.game.rows[2][1].xo && $scope.game.rows[2][1].xo == $scope.game.rows[2][2].xo) {
 					console.log("bottom row");
-					console.log($scope.game.rows[2][0].xo + " wins!");
 					declareWinner($scope.game.rows[2][0].xo);
 				} else if($scope.game.rows[0][0].xo == $scope.game.rows[1][1].xo && $scope.game.rows[1][1].xo == $scope.game.rows[2][2].xo) {
 					console.log("diagonal left");
-					console.log($scope.game.rows[0][0].xo + " wins!");
 					declareWinner($scope.game.rows[0][0].xo);
 				} else if($scope.game.rows[0][2].xo == $scope.game.rows[1][1].xo && $scope.game.rows[1][1].xo == $scope.game.rows[2][0].xo) {
 					console.log("diagonal right");
-					console.log($scope.game.rows[0][2].xo + "wins!");
 					declareWinner($scope.game.rows[0][2].xo);
 				} else {
 					declareWinner("tie");
 				}
 
 				function declareWinner(winLetter) {
-					$scope.game.gameState = 4;
+					
 
 					if(winLetter == 'X'){
-						$scope.winner= $scope.game.player1.username;
-						//Don't forget to set your house! Or name will show up undefined
-						$scope.house= $scope.game.player1.house;
-						$scope.noMessage = false;
-						$scope.isPlayer1 = true;
-						win1 ++;
-						loss2 ++;
+						$scope.game.winner= $scope.game.player1.username;
+						$scope.game.house= $scope.game.player1.house;
+						$scope.game.player1.wins += 1;
+						$scope.game.player2.losses += 1;
+						$scope.game.gameState = 4;
 					} else if(winLetter == 'O'){
-						$scope.winner=$scope.game.player2.username;
-						$scope.house=$scope.game.player2.house;
-						$scope.noMessage = false;
-						$scope.isPlayer2 = true;
-						win2 ++;
-						loss1 ++;
-					} else if($scope.game.turn == 9 && winLetter == 'tie'){
-						$scope.noMessage = false;
-						$scope.isTie = true;
-						console.log("check for win is a tie");
-						tie ++;
+						$scope.game.winner=$scope.game.player2.username;
+						$scope.game.house=$scope.game.player2.house;
+						$scope.game.player2.wins += 1;
+						$scope.game.player1.losses += 1;
+						$scope.game.gameState = 4;
+					} else if($scope.game.turn == $scope.tieGame && winLetter == 'tie'){
+						$scope.game.player1.ties += 1;
+						$scope.game.player2.ties +=1;
+						$scope.game.gameState = 5;
 					}
 					$scope.game.$save();
 				}
@@ -261,9 +243,17 @@ var tictacApp = angular.module('tictacApp', ['firebase']);
 			$scope.game.rows[2][2].xo = '';
 			$scope.game.rows[2][2].empty = true;
 			
-			$scope.game.turn = 1;
+			if($scope.game.gameNum % 2 != 0){
+				$scope.game.turn = 1;
+				$scope.tieGame = 10;
+			} else {
+				$scope.game.turn = 0;
+				$scope.tieGame = 9;
+			}
+			
+			
 			$scope.game.gameState = 3;
-			game ++;
+			$scope.game.gameNum ++;
 			$scope.game.$save();
 		}
 	
